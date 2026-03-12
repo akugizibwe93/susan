@@ -1,7 +1,7 @@
 workers = []
 
 # Generate 400 workers and their attributes dynamically
-for i in range(4):
+for i in range(400):
     worker = {
         "id": "W" + str(i+1),
         "name": "Worker_" + str(i+1),
@@ -39,4 +39,5 @@ for w in workers:
             print("Error displaying worker info:", e)
 
     except Exception as e:
+
          print("Unexpected error while printing workers:", e)
