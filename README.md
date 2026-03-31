@@ -1,35 +1,98 @@
-# Worker Generation Script
+# Netflix Data Analysis - Assignment 4
 
-## Overview
-This Python script dynamically generates worker records with attributes including ID, name, hourly rate, hours worked, salary calculation, and employment level classification.
+## Project Overview
+This project performs data preparation, cleaning, and exploratory data analysis on a Netflix dataset containing information about movies and TV shows. The analysis includes handling missing values, data exploration, and statistical summarization.
 
-## Features
-- **Dynamic Worker Generation**: Creates worker objects with calculated attributes
-- **Salary Calculation**: Automatically computes weekly salary based on hourly rate and hours worked
-- **Level Classification**: Assigns employment levels (A1, A5-F) based on salary ranges
-- **Error Handling**: Includes try-except blocks to gracefully handle potential data errors
-- **Formatted Output**: Displays worker information in an easy-to-read format
+## Dataset Description
+- **File**: Netflix_shows_movies.csv
+- **Records**: 6,224 entries (after data cleaning)
+- **Columns**: 12 features
+- **Column Names**: show_id, type, title, director, cast, country, date_added, release_year, rating, duration, listed_in, description
 
-## How It Works
+## Data Preparation & Cleaning
 
-### Worker Attributes
-Each worker object contains the following attributes:
-- **id**: Unique identifier (W1, W2, W3, W4)
-- **name**: Worker name (Worker_1, Worker_2, etc.)
-- **rate**: Hourly rate (ranges from $10 to $14)
-- **hours**: Hours worked per week (fixed at 40 hours)
-- **salary**: Calculated weekly salary (rate × hours)
-- **level**: Employment level based on salary thresholds
+### Steps Performed:
+1. **File Renaming**: Renamed `netflix_data.csv` to `Netflix_shows_movies.csv`
+2. **Missing Value Analysis**: Identified missing values across all columns
+3. **Missing Value Handling**:
+   - `director`: Filled with 'no director' (1,969 missing values)
+   - `cast`: Filled with 'not listed' (570 missing values)
+   - `country`: Filled with 'not known' (476 missing values)
+   - `date_added`: Filled with 'not listed' (11 missing values)
+   - `rating`: Dropped 10 rows with missing values
 
-### Level Classification Logic
-The script assigns employment levels based on the following salary ranges:
-- **A1**: Salary between $10,000 and $20,000
-- **A5-F**: Salary between $7,500 and $30,000
-- **None**: Default level if salary doesn't meet any criteria
+### Result:
+After cleaning, the dataset contains **6,224 complete records** with no missing values.
 
-**Note**: A worker can have multiple levels assigned if they meet multiple salary ranges.
+## Data Exploration
 
-## Usage
-Simply run the script:
-```bash
-python workers.py
+### Dataset Statistics
+- **Total Records**: 6,224
+- **Total Columns**: 12
+- **Release Year Range**: 1925 - 2020
+- **Mean Release Year**: 2013
+- **Show ID Range**: 247,747 - 81,235,729
+
+### Data Types
+- **Integer**: show_id, release_year
+- **Object (String)**: type, title, director, cast, country, date_added, rating, duration, listed_in, description
+
+## Key Findings
+- Dataset contains both Movies and TV Shows
+- Most content was released between 2013-2018
+- Significant portion of data had missing director information
+- Dataset is comprehensive with 12 detailed attributes per entry
+
+## Files Included
+- `assignment4.ipynb`: Jupyter notebook containing all analysis code and visualizations
+- `Netflix_shows_movies.csv`: Cleaned and processed dataset
+- `README.md`: Project documentation (this file)
+
+## Libraries Used
+- **pandas**: Data manipulation and analysis
+- **numpy**: Numerical computing
+- **matplotlib**: Data visualization
+- **seaborn**: Statistical data visualization
+- **os**: File operations
+
+## Analysis Workflow
+
+### 1. Data Preparation (Cell 1-3)
+- Import required libraries
+- Rename data file
+- Load dataset into pandas DataFrame
+
+### 2. Data Cleaning (Cell 4-9)
+- Check for missing values
+- Handle missing values strategically
+- Drop rows with critical missing data
+- Verify data integrity
+
+### 3. Data Exploration (Cell 10+)
+- Explore dataset shape and structure
+- Review data types and non-null counts
+- Generate statistical summaries
+- Display cleaned dataset
+
+## How to Use
+
+1. Ensure you have the required libraries installed:
+   ```bash
+   pip install pandas numpy matplotlib seaborn
+   ```
+
+2. Open `assignment4.ipynb` in Jupyter Notebook:
+   ```bash
+   jupyter notebook assignment4.ipynb
+   ```
+
+3. Run the cells sequentially to perform data preparation, cleaning, and analysis
+
+## Author
+akugizibwe93
+
+## Date
+March 2026
+
+## License
+This project is part of an educational assignment at Nexford University.
